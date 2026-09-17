@@ -1,0 +1,69 @@
+/* ------------------------------- the bar ------------------------------- */
+ /* the horizontal centring lives on the motion value, not in CSS — a motion
+   transform would replace it */
+.bar {
+  position: absolute; left: 50%;
+  bottom: calc(14px + env(safe-area-inset-bottom, 0px)); z-index: 22;
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 6px 6px 8px; border-radius: 999px;
+  background: var(--glass);
+  backdrop-filter: saturate(180%) blur(26px); -webkit-backdrop-filter: saturate(180%) blur(26px);
+  box-shadow: var(--shadow-float);
+  touch-action: none; user-select: none; -webkit-user-select: none;
+  max-width: calc(100% - 28px); min-width: 0;
+}
+.bar-hint {
+  position: absolute; left: 50%; top: -14px; transform: translateX(-50%);
+  width: 46px; height: 4px; border-radius: 3px; background: var(--text-tertiary);
+}
+.bar-where {
+  display: flex; align-items: center; gap: 10px; min-width: 0;
+  height: 46px; padding: 0 16px 0 12px; border-radius: 999px;
+  background: var(--action); color: var(--action-text);
+  font-size: 15.5px; font-weight: 600; letter-spacing: -0.2px;
+  box-shadow: 0 2px 8px -2px rgb(20 18 14 / 45%);
+}
+.bar-grip { width: 3px; height: 16px; border-radius: 2px; background: currentColor; opacity: 0.45; }
+.bar-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-act {
+  width: 46px; height: 46px; border-radius: 50%;
+  display: grid; place-items: center; color: var(--text);
+  background: var(--surface); box-shadow: var(--shadow-raise);
+}
+.bar-plus { background: var(--surface); }
+
+/* the content fades out behind the bar rather than being sliced by it */
+.now-fade {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 132px; z-index: 21;
+  background: linear-gradient(rgb(from var(--canvas) r g b / 0%), var(--canvas) 70%);
+  pointer-events: none;
+}
+
+/* ------------------------------ the deck ------------------------------- */
+.deck-head { padding: 4px var(--gutter) 18px; display: grid; gap: 4px; }
+.deck-title { font-size: 26px; line-height: 30px; font-weight: 640; letter-spacing: -0.7px; }
+.deck-sub { font-size: 15px; color: var(--text-secondary); }
+.deck-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 var(--gutter); }
+.deck-cell {
+  display: grid; gap: 10px; align-content: start;
+  padding: 16px; min-height: 116px; border-radius: 22px;
+  background: var(--surface); box-shadow: var(--shadow-raise); text-align: left;
+}
+.deck-name { font-size: 17px; line-height: 22px; font-weight: 600; letter-spacing: -0.2px; }
+.deck-note { font-size: 13.5px; line-height: 18px; color: var(--text-secondary); }
+.deck-count {
+  position: absolute; top: 14px; right: 14px;
+  font-size: 13px; font-weight: 640; color: var(--text-tertiary); font-variant-numeric: tabular-nums;
+}
+.deck-cell { position: relative; }
+
+.lens-row { display: flex; gap: 8px; overflow-x: auto; padding: 22px var(--gutter) 6px; scrollbar-width: none; }
+.lens-row::-webkit-scrollbar { display: none; }
+.lens-chip {
+  display: flex; align-items: center; gap: 9px; flex: none;
+  padding: 8px 14px 8px 8px; border-radius: 999px;
+  background: var(--surface); box-shadow: var(--shadow-raise);
+  font-size: 14.5px; font-weight: 560;
+}
+.lens-chip.is-on { background: var(--action); color: var(--action-text); }
+.lens-chip.is-on .avatar { box-shadow: 0 0 0 2px rgb(255 255 255 / 25%); }

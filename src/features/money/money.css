@@ -1,0 +1,286 @@
+/* Money — the only styles this feature adds.
+   Tokens only: no hex values, no colour that does not already carry a meaning
+   in tokens.css. Everything below is either layout or a token-backed surface. */
+
+/* ------------------------------ hero ------------------------------ */
+.mn-hero { padding: 16px 16px 12px; display: grid; gap: 2px; margin-top: 2px; }
+.mn-hero-label { display: flex; align-items: center; gap: 6px; }
+.mn-hero-value {
+  font-size: 44px; line-height: 50px; font-weight: 680; letter-spacing: -1.6px;
+  display: block;
+}
+.mn-hero-line { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 2px; }
+.mn-hero-split {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  margin-top: 14px; padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.mn-sub { display: grid; gap: 1px; min-width: 0; }
+.mn-sub + .mn-sub { padding-left: 12px; border-left: 1px solid var(--border); }
+.mn-sub-value { font-size: 20px; line-height: 26px; font-weight: 640; letter-spacing: -0.5px; }
+.mn-hero-foot { display: flex; align-items: center; gap: 6px; margin-top: 10px; }
+
+/* ----------------------------- stale ------------------------------ */
+.mn-stale {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: var(--r-row);
+  background: var(--warning-bg); color: var(--warning-text);
+  border: 1px solid color-mix(in srgb, var(--warning-text) 16%, transparent);
+  margin-bottom: 10px;
+}
+.mn-stale .t-meta { color: color-mix(in srgb, var(--warning-text) 82%, transparent); }
+
+/* ---------------------------- attention --------------------------- */
+.mn-attn { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 14px; width: 100%; text-align: left; }
+.mn-attn-head { display: flex; align-items: flex-start; gap: 10px; width: 100%; min-width: 0; text-align: left; }
+.mn-attn-glyph {
+  width: 34px; height: 34px; border-radius: 11px; flex: none;
+  display: grid; place-items: center;
+  background: var(--selection); color: var(--text-secondary);
+}
+.mn-attn-failed .mn-attn-glyph { background: var(--danger-bg); color: var(--danger-text); }
+.mn-attn-overdue .mn-attn-glyph { background: var(--danger-bg); color: var(--danger-text); }
+.mn-attn-deposit .mn-attn-glyph { background: var(--warning-bg); color: var(--warning-text); }
+.mn-attn-who { display: grid; gap: 1px; min-width: 0; flex: 1 1 auto; }
+.mn-attn-amt { font-size: 18px; line-height: 24px; font-weight: 640; letter-spacing: -0.4px; }
+.mn-attn-reason {
+  display: flex; align-items: flex-start; gap: 8px; min-width: 0;
+  padding: 9px 11px; border-radius: 12px;
+  background: var(--surface); border: 1px solid var(--border);
+}
+.mn-attn-conseq { display: flex; align-items: flex-start; gap: 8px; min-width: 0; }
+.mn-attn-foot { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.mn-attn-foot .btn { flex: 0 1 auto; min-width: 0; padding: 0 14px; }
+.mn-attn-foot .btn-label { overflow: hidden; text-overflow: ellipsis; }
+
+/* --------------------------- invoice row -------------------------- */
+.mn-inv {
+  display: flex; align-items: flex-start; gap: 12px; width: 100%;
+  padding: 13px 14px; text-align: left; background: var(--surface);
+}
+.mn-inv-main { display: grid; gap: 3px; min-width: 0; flex: 1 1 auto; }
+.mn-inv-meta { display: grid; gap: 1px; min-width: 0; }
+.mn-inv-side { display: grid; justify-items: end; gap: 5px; flex: none; }
+.mn-inv-amt { font-size: 16px; line-height: 22px; font-weight: 620; letter-spacing: -0.3px; }
+.mn-inv-chev { align-self: center; color: var(--text-tertiary); flex: none; }
+.mn-group-note { padding: 0 4px 6px; }
+/* a quiet label inside a document or a sheet — never a section heading */
+.mn-label { font-weight: 620; color: var(--text-secondary); letter-spacing: 0.2px; }
+
+/* ---------------------------- estimates --------------------------- */
+.mn-est { display: flex; align-items: flex-start; gap: 12px; width: 100%; padding: 13px 14px; text-align: left; background: var(--surface); }
+.mn-est-open { display: flex; align-items: flex-start; gap: 12px; flex: 1 1 auto; min-width: 0; text-align: left; }
+.mn-est-main { display: grid; gap: 3px; min-width: 0; flex: 1 1 auto; }
+.mn-est-side { display: grid; justify-items: end; gap: 6px; flex: none; }
+.mn-age { display: inline-flex; align-items: center; gap: 5px; }
+.mn-age-bar { width: 40px; height: 4px; border-radius: 2px; background: var(--surface-sunken); overflow: hidden; }
+.mn-age-fill { display: block; height: 100%; background: var(--text-tertiary); border-radius: 2px; }
+.mn-age-hot .mn-age-fill { background: var(--warning-text); }
+
+/* ---------------------------- skeleton ---------------------------- */
+.mn-skel { display: grid; gap: 8px; }
+.mn-skel-row { display: flex; align-items: center; gap: 12px; padding: 14px; }
+.mn-skel-main { display: grid; gap: 7px; flex: 1 1 auto; }
+
+/* --------------------------- the document -------------------------- */
+.mn-doc-head { display: flex; align-items: center; gap: 12px; padding: 2px 0 12px; }
+.mn-paper {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: 16px 16px 14px;
+  box-shadow: var(--step-shadow-lift);
+}
+/* the paper under the paper — two sheets peeking out at the bottom */
+.mn-paper::before,
+.mn-paper::after {
+  content: ""; position: absolute; left: 10px; right: 10px; bottom: -5px; height: 12px;
+  border: 1px solid var(--border); border-top: 0;
+  border-radius: 0 0 var(--r-card) var(--r-card);
+  background: var(--surface-muted); z-index: -1;
+}
+.mn-paper::after { left: 18px; right: 18px; bottom: -10px; background: var(--surface-sunken); }
+.mn-paper-head { display: flex; align-items: flex-start; gap: 10px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.mn-paper-ref { flex: none; text-align: right; white-space: nowrap; }
+.mn-paper-sum > span:first-child { min-width: 0; }
+/* the only branded element on the document, per the client's rule: the mark,
+   masked so it inherits the ink colour in both themes */
+.mn-paper-mark {
+  width: 52px; height: 26px; flex: none; opacity: 0.88;
+  background: var(--text);
+  -webkit-mask: url("/brand/logo.svg") no-repeat left center / contain;
+  mask: url("/brand/logo.svg") no-repeat left center / contain;
+}
+.mn-paper-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.mn-paper-cell { display: grid; gap: 1px; min-width: 0; }
+.mn-paper-scope { padding: 10px 0 2px; display: grid; gap: 7px; }
+.mn-paper-line { display: flex; align-items: flex-start; gap: 12px; }
+.mn-paper-line .grow { display: grid; gap: 1px; min-width: 0; }
+.mn-paper-items { padding: 10px 0 0; display: grid; gap: 10px; }
+.mn-paper-sums { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); display: grid; gap: 7px; }
+.mn-paper-sum { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.mn-paper-due {
+  margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border-strong);
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+}
+.mn-paper-due-value { font-size: 22px; line-height: 28px; font-weight: 660; letter-spacing: -0.6px; }
+
+/* ------------------------------ amount ----------------------------- */
+.mn-amount { display: grid; justify-items: center; gap: 6px; padding: 10px 0 4px; }
+.mn-amount-box { display: flex; align-items: baseline; justify-content: center; gap: 2px; }
+.mn-amount-cur { font-size: 26px; font-weight: 600; color: var(--text-secondary); }
+.mn-amount-input {
+  border: 0; outline: 0; background: none; padding: 0;
+  font-size: 46px; line-height: 54px; font-weight: 680; letter-spacing: -1.4px;
+  font-variant-numeric: tabular-nums; color: var(--text);
+  width: 7ch; text-align: left;
+}
+.mn-amount-input:focus-visible { outline: none; }
+.mn-amount-rule { width: 190px; height: 2px; border-radius: 1px; background: var(--border-strong); }
+.mn-amount.is-focus .mn-amount-rule { background: var(--focus); }
+.mn-amount-err { color: var(--danger-text); }
+
+.mn-chips { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 8px; }
+.mn-chip {
+  min-height: var(--touch); padding: 6px 10px; border-radius: var(--r-field);
+  background: var(--step-bg); border: 1px solid var(--border); box-shadow: var(--step-shadow);
+  display: grid; gap: 1px; justify-items: center; align-content: center;
+  color: var(--text-secondary);
+}
+.mn-chip .mn-chip-label { font-size: 13px; font-weight: 600; color: var(--text); }
+.mn-chip.is-on { background: var(--action); border-color: var(--action); box-shadow: none; }
+.mn-chip.is-on .mn-chip-label, .mn-chip.is-on .t-meta { color: var(--action-text); }
+.mn-chip:disabled { opacity: 0.45; }
+
+/* ------------------------------ method ----------------------------- */
+.mn-method { display: flex; align-items: center; gap: 12px; width: 100%; padding: 12px 14px; text-align: left; background: var(--surface); min-height: var(--touch); }
+.mn-method-glyph { width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; background: var(--selection); flex: none; }
+.mn-method-main { display: grid; gap: 1px; min-width: 0; flex: 1 1 auto; }
+.mn-method.is-on { background: var(--selection); }
+.mn-method-check { color: var(--text); flex: none; }
+
+/* ----------------------------- confirm ----------------------------- */
+.mn-confirm-head { display: grid; justify-items: center; gap: 2px; padding: 4px 0 14px; }
+.mn-confirm-amt { font-size: 38px; line-height: 44px; font-weight: 680; letter-spacing: -1.2px; }
+.mn-decline {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px 14px; border-radius: var(--r-row);
+  background: var(--danger-bg); color: var(--danger-text);
+  border: 1px solid color-mix(in srgb, var(--danger-text) 18%, transparent);
+}
+.mn-decline .t-meta { color: color-mix(in srgb, var(--danger-text) 82%, transparent); }
+
+/* --------------------------- authorise ----------------------------- */
+.mn-auth { display: grid; justify-items: center; gap: 10px; padding: 8px 20px 18px; text-align: center; }
+.mn-bio { position: relative; width: 96px; height: 96px; display: grid; place-items: center; }
+.mn-bio-ring {
+  position: absolute; inset: 0; border-radius: 30px;
+  border: 2px solid var(--text); opacity: 0.16;
+  animation: mn-pulse 1800ms var(--ease) infinite;
+}
+.mn-bio-ring:nth-child(2) { animation-delay: 600ms; }
+.mn-bio-face {
+  width: 72px; height: 72px; border-radius: 24px; display: grid; place-items: center;
+  background: var(--selection); color: var(--text);
+}
+.mn-bio.is-scanning .mn-bio-face { background: var(--action); color: var(--action-text); }
+.mn-bio.is-scanning .mn-bio-ring { animation-duration: 900ms; }
+@keyframes mn-pulse {
+  0%   { transform: scale(0.78); opacity: 0.28; }
+  70%  { transform: scale(1.06); opacity: 0; }
+  100% { transform: scale(1.06); opacity: 0; }
+}
+
+.mn-pin { display: grid; justify-items: center; gap: 12px; width: 100%; padding: 4px 0 8px; }
+.mn-pin-dots { display: flex; gap: 16px; }
+.mn-pin-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 1.5px solid var(--border-strong); background: none;
+  transition: background var(--t-press) var(--ease), border-color var(--t-press) var(--ease);
+}
+.mn-pin-dot.is-on { background: var(--text); border-color: var(--text); }
+.mn-pin-wrong .mn-pin-dot { border-color: var(--danger-text); background: var(--danger-text); }
+.mn-pin-pad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; width: 100%; max-width: 262px; }
+.mn-pin-key {
+  min-height: 54px; border-radius: var(--r-field);
+  background: var(--step-bg); border: 1px solid var(--border); box-shadow: var(--step-shadow);
+  font-size: 23px; font-weight: 560; font-variant-numeric: tabular-nums;
+  display: grid; place-items: center;
+}
+.mn-pin-key.is-blank { background: none; border: 0; box-shadow: none; }
+.mn-pin-key.is-fn { font-size: 14px; font-weight: 580; color: var(--text-secondary); }
+
+/* ------------------------------ result ----------------------------- */
+.mn-result { display: grid; justify-items: center; gap: 8px; padding: 10px 22px 18px; text-align: center; }
+.mn-result-mark {
+  width: 76px; height: 76px; border-radius: 26px; display: grid; place-items: center;
+  background: var(--success-bg); color: var(--success-text); margin-bottom: 4px;
+}
+.mn-result-amt { font-size: 34px; line-height: 40px; font-weight: 680; letter-spacing: -1px; }
+.mn-result-list { width: 100%; margin-top: 12px; }
+
+/* ---------------------------- pay history -------------------------- */
+.mn-pay { display: flex; align-items: flex-start; gap: 12px; padding: 11px 14px; }
+.mn-pay-main { display: grid; gap: 1px; min-width: 0; flex: 1 1 auto; }
+.mn-pay-side { display: grid; justify-items: end; gap: 4px; flex: none; }
+.mn-pay-failed .mn-pay-amt { color: var(--danger-text); text-decoration: line-through; }
+
+/* ---------------- v2: one number, then what is stuck ---------------- */
+.mny-hero { padding: 8px 0 4px; display: grid; gap: 6px; }
+.mny-label { font-size: 15px; font-weight: 560; color: var(--text-secondary); }
+.mny-figure { margin: 2px 0 2px; }
+.mny-caption { font-size: 16px; line-height: 23px; color: var(--text-secondary); }
+.mny-second { color: var(--text-tertiary); font-size: 15px; }
+.mny-stale { display: inline-flex; align-items: center; gap: 7px; margin-top: 10px; font-size: 14px; color: var(--warning-text); }
+
+.mny-sec { padding: 52px 0 0; display: grid; gap: 14px; }
+.mny-sec > h2 { font-size: 20px; line-height: 26px; font-weight: 620; letter-spacing: -0.4px; }
+
+.mny-stuck { display: grid; gap: 14px; padding: 20px 2px; }
+.mny-stuck + .mny-stuck { box-shadow: inset 0 1px 0 var(--border); }
+.mny-stuck-body { display: flex; align-items: flex-start; gap: 14px; text-align: left; width: 100%; min-width: 0; }
+.mny-stuck-text { display: grid; grid-template-columns: minmax(0,1fr); gap: 4px; flex: 1 1 auto; min-width: 0; }
+.mny-stuck-top { display: flex; align-items: baseline; gap: 12px; }
+.mny-stuck-name { font-size: 17px; line-height: 23px; font-weight: 580; letter-spacing: -0.2px; }
+.mny-stuck-fig { font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; flex: none; }
+.mny-stuck-why { display: flex; align-items: center; gap: 8px; font-size: 15px; line-height: 21px; font-weight: 540; color: var(--warning-text); }
+.mny-stuck-why i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: none; }
+.mny-stuck-why.is-bad { color: var(--danger-text); }
+.mny-stuck-sub { font-size: 14.5px; line-height: 20px; color: var(--text-tertiary); }
+.mny-stuck-cons { font-size: 14.5px; line-height: 20px; color: var(--text-secondary); }
+.mny-stuck-act { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.mny-stuck-act .btn { min-width: 168px; }
+.mny-stuck-link { display: inline-flex; align-items: center; gap: 4px; font-size: 14.5px; font-weight: 500; color: var(--text-tertiary); }
+
+.mny-open { display: flex; align-items: center; gap: 14px; width: 100%; padding: 20px 2px; text-align: left; }
+.mny-open + .mny-open { box-shadow: inset 0 1px 0 var(--border); }
+.mny-open .grow { display: grid; gap: 3px; min-width: 0; }
+.mny-open-t { font-size: 17px; line-height: 23px; font-weight: 580; letter-spacing: -0.2px; }
+.mny-open-s { font-size: 14.5px; line-height: 20px; color: var(--text-secondary); }
+.mny-open-fig { font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; flex: none; min-width: 74px; text-align: right; }
+.mny-state { display: inline-flex; align-items: center; gap: 7px; padding-top: 2px; font-size: 14px; line-height: 20px; font-weight: 520; color: var(--text-tertiary); }
+.mny-state i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: none; }
+.mny-state.tone-danger { color: var(--danger-text); }
+.mny-state.tone-warning { color: var(--warning-text); }
+.mny-state.tone-success { color: var(--success-text); }
+.mny-state.tone-neutral, .mny-state.tone-info { color: var(--text-tertiary); }
+.mny-group { padding: 26px 0 6px; font-size: 15px; font-weight: 560; color: var(--text-tertiary); }
+.mny-group:first-child { padding-top: 6px; }
+
+.mny-clear { display: grid; justify-items: center; gap: 12px; text-align: center; padding: 56px 0 8px; }
+.mny-clear-mark { width: 72px; height: 72px; border-radius: 24px; display: grid; place-items: center; background: var(--success-bg); color: var(--success-text); }
+.mny-foot { padding: 52px 0 6px; text-align: center; font-size: 13.5px; color: var(--text-tertiary); }
+
+/* what's worth selling */
+.mix-row { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; }
+.mix-row + .mix-row { box-shadow: inset 0 1px 0 var(--border); }
+.mix-row .grow { display: grid; grid-template-columns: minmax(0,1fr); gap: 7px; }
+.mix-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.mix-name { font-size: 17px; line-height: 23px; font-weight: 580; letter-spacing: -0.2px; }
+.mix-value { font-size: 17px; font-weight: 600; }
+.mix-bars { display: flex; align-items: center; gap: 10px; }
+.mix-bar { flex: 1 1 auto; height: 9px; border-radius: 5px; background: var(--surface-sunken); overflow: hidden; }
+.mix-bar i { display: block; height: 100%; border-radius: 5px; background: var(--hue-emerald); }
+.mix-pct { font-size: 14px; font-weight: 600; color: var(--text-secondary); width: 40px; text-align: right; }
+.mix-meta { font-size: 14px; line-height: 20px; color: var(--text-secondary); }

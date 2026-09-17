@@ -1,0 +1,25 @@
+.med-lede { padding: 4px 0 18px; }
+.med-list { display: grid; }
+.med-reel { display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px 0; text-align: left; }
+.med-reel + .med-reel, .med-list > div + div .med-reel { box-shadow: inset 0 1px 0 var(--border); }
+.med-reel .grow { display: grid; grid-template-columns: minmax(0,1fr); gap: 3px; }
+.med-thumb { width: 62px; height: 78px; border-radius: 14px; overflow: hidden; flex: none; background: var(--surface-sunken); box-shadow: var(--shadow-raise); }
+.med-thumb img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.1) contrast(1.04); }
+.med-title { font-size: 16.5px; line-height: 22px; font-weight: 580; letter-spacing: -0.2px; }
+.med-meta { font-size: 14px; color: var(--text-secondary); }
+.med-stats { display: flex; gap: 12px; padding-top: 4px; font-size: 13.5px; color: var(--text-tertiary); font-variant-numeric: tabular-nums; }
+.med-stats .is-good { color: var(--hue-emerald); font-weight: 600; }
+.med-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.med-cell { position: relative; aspect-ratio: 4/5; border-radius: 18px; overflow: hidden; background: var(--surface-sunken); box-shadow: var(--shadow-raise); }
+.med-cell img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.1) contrast(1.04); }
+.med-cell-tag {
+  position: absolute; left: 10px; bottom: 10px; padding: 5px 10px; border-radius: 999px;
+  background: rgb(12 12 18 / 62%); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  color: #fff; font-size: 12.5px; font-weight: 600;
+}
+.med-hero { display: block; width: 100%; aspect-ratio: 16/10; border-radius: 20px; overflow: hidden; background: var(--surface-sunken); }
+.med-hero img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.1) contrast(1.04); }
+.med-figs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.med-fig { font-size: 26px; line-height: 30px; font-weight: 650; letter-spacing: -0.7px; font-variant-numeric: tabular-nums; }
+.med-empty { display: grid; justify-items: center; gap: 12px; text-align: center; padding: 64px 20px; }
+.med-empty .t-body { max-width: 32ch; }

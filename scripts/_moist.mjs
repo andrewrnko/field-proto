@@ -1,0 +1,18 @@
+import puppeteer from "puppeteer-core";
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+const dark=process.argv.includes("--dark");
+const b=await puppeteer.launch({executablePath:"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",headless:"new",userDataDir:`/tmp/gr-moist-${process.pid}`,args:["--no-first-run","--font-render-hinting=none"]});
+const p=await b.newPage(); await p.setViewport({width:520,height:1000,deviceScaleFactor:3});
+const problems=[]; p.on("pageerror",e=>problems.push(e.message.slice(0,140)));
+p.on("console",m=>{if(m.type()==="error")problems.push(m.text().slice(0,140))});
+await p.evaluateOnNewDocument((t)=>localStorage.setItem("gr-theme",t), dark?"dark":"light");
+await p.goto("http://127.0.0.1:4825",{waitUntil:"networkidle0"}); await wait(800);
+const tap=async(t)=>{const ok=await p.evaluate((t)=>{const els=[...document.querySelectorAll("button,[role=button],[data-shot]")].filter(e=>e.offsetParent!==null&&!e.closest("[inert]"));const el=els.find(e=>((e.dataset.shot||e.getAttribute("aria-label")||e.textContent||"").trim()).startsWith(t));if(el){el.click();return true}return false},t);await wait(700);if(!ok)problems.push("no target: "+t)};
+await tap("deck"); await tap("Jobs"); await tap("Wes Trimble").catch(()=>{});
+await p.evaluate(()=>{const r=[...document.querySelectorAll("button.jrow")].find(e=>/Water damage/.test(e.textContent));(r||document.querySelectorAll("button.jrow")[0]).click();});
+await wait(900);
+await p.evaluate(()=>document.querySelector(".moist")?.scrollIntoView({block:"center"}));
+await wait(500);
+await (await p.$(".screen")).screenshot({path:`shots/ops/06-moisture${dark?"--dark":""}.png`});
+console.log(problems.length?problems.join("\n"):"clean");
+await b.close();

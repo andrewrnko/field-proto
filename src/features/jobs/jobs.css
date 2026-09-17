@@ -1,0 +1,40 @@
+/* Jobs — the list is the screen. Typography groups it; nothing is boxed. */
+.jrow {
+  display: flex; align-items: flex-start; gap: 16px; width: 100%;
+  padding: 18px 2px; text-align: left; min-height: var(--touch-row);
+  background: var(--canvas);
+}
+.jrow + .jrow, .swipe + .swipe .jrow { box-shadow: inset 0 1px 0 var(--border); }
+.jrow .grow { display: grid; gap: 4px; }
+.jrow-name { font-size: 17px; line-height: 23px; font-weight: 580; letter-spacing: -0.2px; }
+.jrow-what { font-size: 15px; line-height: 21px; color: var(--text-secondary); }
+.jrow-tags { display: flex; gap: 6px; padding-top: 3px; min-width: 0; }
+.jrow-tags .tag { text-overflow: ellipsis; }
+.jrow-state span { overflow: hidden; text-overflow: ellipsis; }
+.jrow-state i { width: 7px; height: 7px; border-radius: 50%; background: var(--text-tertiary); flex: none; }
+.jrow-state.is-blocked { color: var(--warning-text); }
+.jrow-state.is-blocked i { background: var(--warning-text); }
+.jrow-state.is-late { color: var(--danger-text); }
+.jrow-state.is-late i { background: var(--danger-text); }
+.jrow-state.is-live { color: var(--success-text); }
+.jrow-state.is-live i { background: var(--success-text); }
+.jrow-right { display: grid; justify-items: end; gap: 4px; flex: none; padding-top: 1px; }
+.jrow-money { font-size: 15px; line-height: 21px; font-weight: 500; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+.jrow-when { font-size: 13.5px; color: var(--danger-text); font-variant-numeric: tabular-nums; }
+
+.jgroup { padding: 40px 0 6px; display: flex; align-items: baseline; gap: 10px; }
+.jgroup:first-of-type { padding-top: 8px; }
+.jgroup h2 { font-size: 20px; line-height: 26px; font-weight: 620; letter-spacing: -0.4px; }
+.jgroup span { font-size: 16px; color: var(--text-tertiary); }
+
+.jsearch {
+  display: flex; align-items: center; gap: 10px; overflow: hidden;
+  padding: 0 14px; border-radius: 16px; background: var(--surface-sunken); min-height: 48px;
+}
+.jsearch input { flex: 1; min-width: 0; border: 0; background: none; outline: 0; font-size: 17px; }
+
+.jempty { display: grid; justify-items: center; gap: 16px; text-align: center; padding: 72px 20px; }
+.jempty-mark {
+  width: 92px; height: 92px; border-radius: 30px; display: grid; place-items: center;
+  background: var(--surface); box-shadow: var(--shadow-raise); color: var(--text-tertiary);
+}

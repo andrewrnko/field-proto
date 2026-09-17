@@ -1,0 +1,39 @@
+.set-profile { display: flex; align-items: center; gap: 12px; padding: 4px 2px 14px; }
+.theme-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.theme-card {
+  display: grid; gap: 8px; justify-items: center; padding: 12px 10px 11px;
+  border-radius: var(--r-row); background: var(--step-bg);
+  border: 1px solid var(--edge-highlight); box-shadow: var(--step-shadow);
+}
+.theme-card.is-on { box-shadow: var(--step-shadow-lift), 0 0 0 2px var(--action) inset; }
+.theme-swatch {
+  width: 100%; aspect-ratio: 4 / 4.2; border-radius: 12px; overflow: hidden; position: relative;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 8%);
+}
+.sw-light { background: linear-gradient(#FFFFFF 42%, #F1F1F3 42%); }
+.sw-dark  { background: linear-gradient(#17171B 42%, #0E0E11 42%); }
+.sw-auto  { background: linear-gradient(105deg, #FFFFFF 0 50%, #17171B 50% 100%); }
+.theme-swatch::after {
+  content: ""; position: absolute; left: 14%; right: 14%; top: 14%; height: 8%;
+  border-radius: 3px; background: currentColor; opacity: .32;
+}
+.theme-label { font-size: 14px; font-weight: 580; }
+
+.primer { display: grid; gap: 14px; text-align: left; padding: 0 0 20px; }
+.primer-art {
+  width: 100%; height: 148px; border-radius: 18px; position: relative; overflow: hidden;
+  background: linear-gradient(170deg, var(--surface-muted), var(--surface-sunken));
+  border: 1px solid var(--edge-highlight); box-shadow: var(--step-shadow); margin-bottom: 6px;
+}
+.primer-card {
+  position: absolute; left: 12px; right: 12px; display: flex; gap: 9px; align-items: center;
+  padding: 10px 12px; border-radius: 14px; background: var(--surface);
+  box-shadow: 0 10px 24px -12px rgb(20 20 30 / 35%); border: 1px solid var(--edge-highlight);
+}
+.primer-card .t-meta { text-align: left; }
+.primer-icon { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; flex: none; }
+.pi-alert { background: var(--danger-bg); color: var(--danger-text); }
+.pi-money { background: var(--success-bg); color: var(--success-text); }
+.pi-msg { background: var(--info-bg); color: var(--info-text); }
+.primer-list { display: grid; gap: 8px; width: 100%; text-align: left; padding-top: 4px; }
+.primer-row { display: flex; align-items: center; gap: 10px; padding: 11px 12px; border-radius: 12px; background: var(--surface-muted); }

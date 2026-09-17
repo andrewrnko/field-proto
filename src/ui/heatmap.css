@@ -1,0 +1,22 @@
+.heat { display: grid; gap: 12px; --heat: var(--hue-blue); }
+.heat-emerald { --heat: var(--hue-emerald); }
+.heat-violet { --heat: var(--hue-violet); }
+.heat-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.heat-when { font-size: 15px; font-weight: 560; }
+.heat-val { font-size: 15px; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+/* one column per week, filled top-to-bottom: the explicit rows plus column
+   flow are what make the calendar read as weeks, not as a wall of squares */
+.heat-grid { display: grid; grid-auto-flow: column; grid-template-rows: repeat(7, 1fr); grid-auto-columns: 1fr; gap: 4px; }
+.heat-cell { aspect-ratio: 1; border-radius: 5px; background: var(--surface-sunken); min-height: 0; }
+.heat-cell.s1 { background: color-mix(in srgb, var(--heat) 22%, var(--surface)); }
+.heat-cell.s2 { background: color-mix(in srgb, var(--heat) 45%, var(--surface)); }
+.heat-cell.s3 { background: color-mix(in srgb, var(--heat) 70%, var(--surface)); }
+.heat-cell.s4 { background: var(--heat); }
+.heat-cell.is-on { box-shadow: 0 0 0 2px var(--text); }
+.heat-scale { display: flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--text-tertiary); }
+.heat-scale i { width: 12px; height: 12px; border-radius: 3px; background: var(--surface-sunken); }
+.heat-scale i.s1 { background: color-mix(in srgb, var(--heat) 22%, var(--surface)); }
+.heat-scale i.s2 { background: color-mix(in srgb, var(--heat) 45%, var(--surface)); }
+.heat-scale i.s3 { background: color-mix(in srgb, var(--heat) 70%, var(--surface)); }
+.heat-scale i.s4 { background: var(--heat); }
+.heat-scale span:last-child { margin-left: 2px; }

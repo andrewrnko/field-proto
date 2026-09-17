@@ -1,0 +1,141 @@
+/* Close out the day. Full-screen flow + the quiet line that opens it. */
+
+/* ------------------------------ the line ------------------------------ */
+
+.cls-line {
+  display: flex; align-items: center; gap: 14px; width: 100%;
+  min-height: var(--touch-row); padding: 18px 2px; text-align: left;
+  margin-top: 12px; box-shadow: inset 0 1px 0 var(--border);
+}
+.cls-line .grow { display: grid; grid-template-columns: minmax(0, 1fr); gap: 3px; }
+.cls-line-title { font-size: 17px; line-height: 23px; font-weight: 580; letter-spacing: -0.2px; }
+.cls-line-sub { font-size: 14.5px; line-height: 20px; color: var(--text-secondary); }
+.cls-line > svg:first-child { flex: none; }
+
+/* ------------------------------ the flow ------------------------------ */
+
+.cls { position: absolute; inset: 0; display: flex; flex-direction: column; background: var(--canvas); }
+.cls-top {
+  flex: none; padding: calc(var(--safe-top, 0px) + 8px) 12px 8px;
+  display: grid; grid-template-columns: 36px 1fr 36px; align-items: center; gap: 8px;
+}
+.cls-title { min-width: 0; text-align: center; }
+.cls-title h2 { text-align: center; }
+.cls-progress { height: 3px; border-radius: 2px; background: var(--surface-sunken); margin: 6px 16px 0; overflow: hidden; flex: none; }
+.cls-progress i { display: block; height: 100%; border-radius: 2px; background: var(--action); }
+.cls-body { flex: 1 1 auto; min-height: 0; padding: 16px var(--gutter) 28px; }
+.cls-foot {
+  flex: none; padding: 12px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+.cls-q { padding: 4px 2px 20px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; }
+.cls-q .t-body { max-width: 36ch; }
+.cls-note { padding: 20px 2px 0; max-width: 42ch; }
+.cls-status { text-align: center; }
+.cls-status.save-saved { color: var(--success-text); }
+.cls-status.save-saving { color: var(--text-tertiary); }
+.cls-status.save-error { color: var(--danger-text); }
+
+/* ----------------------------- 1. hours ----------------------------- */
+
+.cls-shifts { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.cls-shift {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 14px;
+  border-radius: var(--r-card); background: var(--surface);
+  box-shadow: var(--shadow-raise);
+}
+.cls-shift.is-out { background: var(--surface-muted); box-shadow: none; }
+.cls-shift-head { display: flex; align-items: center; gap: 12px; }
+.cls-shift-head .grow { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; }
+.cls-shift-h {
+  flex: none; font-size: 22px; line-height: 26px; font-weight: 650; letter-spacing: -0.6px;
+  color: var(--text-secondary);
+}
+.cls-shift-h.is-live { color: var(--text); }
+.cls-shift-done {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 13.5px; line-height: 19px; font-weight: 560; color: var(--success-text);
+}
+
+.cls-ends { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.cls-end {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px; min-height: var(--touch); padding: 8px 6px;
+  border-radius: var(--r-field); background: var(--surface-muted);
+  font-size: 13.5px; font-weight: 560; color: var(--text-secondary);
+}
+.cls-end em { font-style: normal; font-size: 14px; font-weight: 640; color: var(--text); }
+.cls-end.is-on { background: var(--selection); box-shadow: inset 0 0 0 2px var(--action); color: var(--text); }
+
+/* -------------------------- 2. what got done -------------------------- */
+
+.cls-tasks { display: flex; flex-wrap: wrap; gap: 8px; }
+.cls-task {
+  min-height: var(--touch); padding: 0 18px;
+  border-radius: var(--r-pill); background: var(--surface);
+  box-shadow: var(--shadow-raise);
+  font-size: 15.5px; font-weight: 560; letter-spacing: -0.1px;
+}
+.cls-task.is-on { background: var(--action); color: var(--action-text); box-shadow: none; }
+.cls-field { padding-top: 32px; }
+
+/* ----------------------------- 3. photos ----------------------------- */
+
+.cls-photos-wrap { padding-top: 20px; }
+.cls-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.cls-photo {
+  position: relative; aspect-ratio: 1; border-radius: 12px; overflow: hidden;
+  background: var(--surface-sunken); min-height: 44px;
+}
+.cls-photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.1) contrast(1.04); }
+.cls-photo-skel { aspect-ratio: 1; width: 100%; height: auto; border-radius: 12px; display: block; }
+/* same shape as the inspection flow's photo picker: nothing when off, a solid
+   action mark when on — the grid must not read as a wall of badges */
+.cls-photo-flag {
+  position: absolute; top: 6px; right: 6px;
+  width: 22px; height: 22px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--action); color: var(--action-text);
+}
+.cls-photo.is-on::after {
+  content: ""; position: absolute; inset: 0; border-radius: 12px;
+  box-shadow: inset 0 0 0 3px var(--action);
+}
+
+/* ---------------------------- 4. tomorrow ---------------------------- */
+
+.cls-blockers { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+.cls-blocker-wrap { display: grid; grid-template-columns: minmax(0, 1fr); }
+.cls-blocker {
+  display: flex; align-items: center; gap: 14px; width: 100%;
+  min-height: 72px; padding: 14px; text-align: left;
+  border-radius: var(--r-row); background: var(--step-bg);
+  border: 1px solid var(--edge-highlight); box-shadow: var(--step-shadow);
+}
+.cls-blocker .grow { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; }
+.cls-blocker.is-on { box-shadow: var(--step-shadow-lift), inset 0 0 0 2px var(--action); }
+.cls-blocker > svg:last-child { flex: none; }
+
+.cls-mats { overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr); margin: 6px 0 0 24px; padding-left: 16px; border-left: 2px solid var(--border-strong); }
+.cls-mat {
+  display: flex; align-items: center; gap: 12px; width: 100%;
+  min-height: var(--touch); padding: 10px 2px; text-align: left;
+}
+.cls-mat .grow { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px; }
+.cls-mat-dot {
+  width: 18px; height: 18px; border-radius: 50%; flex: none;
+  box-shadow: inset 0 0 0 2px var(--border-strong);
+}
+.cls-mat.is-on .cls-mat-dot { box-shadow: inset 0 0 0 6px var(--action); }
+.cls-mat-empty { padding: 10px 2px; }
+
+/* ------------------------------ 5. done ------------------------------ */
+
+.cls-done { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 14px; padding: 24px 0 8px; text-align: center; }
+.cls-summary { width: 100%; padding-top: 10px; }
+.cls-sum-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 12px 0; }
+.cls-sum-row + .cls-sum-row { box-shadow: inset 0 1px 0 var(--border); }
+.cls-sum-row > span:last-child { text-align: right; }
+
+.cls-end:disabled { opacity: .38; }
+.cls-end-note { margin-top: -4px; }

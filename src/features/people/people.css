@@ -1,0 +1,48 @@
+.ppl-heat { display: grid; gap: 14px; padding: 4px 0 34px; }
+.ppl-heat > h2 { font-size: 20px; line-height: 26px; font-weight: 620; letter-spacing: -0.4px; }
+.ppl { display: grid; }
+.ppl-row { display: flex; align-items: center; gap: 14px; width: 100%; padding: 16px 0; text-align: left; }
+.ppl-row + .ppl-row { box-shadow: inset 0 1px 0 var(--border); }
+.ppl-row .grow { display: grid; grid-template-columns: minmax(0,1fr); gap: 3px; }
+.ppl-face { position: relative; flex: none; }
+.ppl-live {
+  position: absolute; right: -1px; bottom: -1px; width: 13px; height: 13px; border-radius: 50%;
+  background: var(--hue-emerald); box-shadow: 0 0 0 3px var(--canvas);
+}
+.ppl-name { font-size: 17px; line-height: 23px; font-weight: 580; letter-spacing: -0.2px; }
+.ppl-note { font-size: 14.5px; line-height: 20px; color: var(--text-secondary); }
+.ppl-tags { display: flex; padding-top: 4px; }
+.ppl-right { display: grid; justify-items: end; gap: 1px; flex: none; }
+.ppl-hours { font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.ppl-cost { font-size: 13px; color: var(--text-tertiary); font-variant-numeric: tabular-nums; }
+
+.per-head { display: flex; align-items: center; gap: 16px; padding: 4px 0 20px; }
+.per-name { font-size: 28px; line-height: 32px; font-weight: 640; letter-spacing: -0.8px; }
+.per-role { font-size: 15px; color: var(--text-secondary); text-transform: capitalize; }
+.per-live {
+  display: flex; align-items: center; gap: 12px; width: 100%; text-align: left;
+  padding: 16px; border-radius: 20px; background: var(--surface); box-shadow: var(--shadow-raise);
+}
+.per-live .grow { display: grid; grid-template-columns: minmax(0,1fr); gap: 2px; }
+.per-live-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--hue-emerald); flex: none; box-shadow: 0 0 0 4px color-mix(in srgb, var(--hue-emerald) 22%, transparent); }
+.per-live-title { font-size: 16px; font-weight: 580; }
+.per-live-note { font-size: 14px; color: var(--text-secondary); }
+
+.per-sec { padding: 40px 0 0; display: grid; gap: 14px; }
+.per-sec > h2 { font-size: 20px; line-height: 26px; font-weight: 620; letter-spacing: -0.4px; }
+.per-week { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 8px; height: 104px; align-items: end; }
+.per-day { display: grid; gap: 8px; justify-items: center; height: 100%; align-content: end; }
+ /* a day with no hours is not a grey bar — it is a baseline */
+.per-bar { position: relative; width: 100%; height: 82px; display: flex; align-items: flex-end; }
+.per-bar::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px; background: var(--border); }
+.per-bar i { display: block; position: relative; z-index: 1; width: 100%; min-height: 2px; border-radius: 8px; background: var(--hue-blue); }
+.per-bar i.is-long { background: var(--hue-amber); }
+.per-daylabel { font-size: 12.5px; font-weight: 600; color: var(--text-tertiary); }
+.per-weeknote { font-size: 15px; color: var(--text-secondary); }
+
+.per-job, .per-entry { display: flex; align-items: center; gap: 12px; width: 100%; padding: 14px 0; text-align: left; }
+.per-job + .per-job, .per-entry + .per-entry { box-shadow: inset 0 1px 0 var(--border); }
+.per-job .grow, .per-entry .grow { display: grid; grid-template-columns: minmax(0,1fr); gap: 2px; }
+.per-job-name, .per-entry-task { font-size: 16px; font-weight: 560; }
+.per-job-note, .per-entry-note { font-size: 14px; color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.per-job-hours, .per-entry-h { font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; flex: none; }

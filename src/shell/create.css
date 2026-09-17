@@ -1,0 +1,12 @@
+.create-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.create-cell {
+  display: grid; gap: 12px; align-content: start; text-align: left;
+  padding: 16px; min-height: 122px; border-radius: 22px;
+  background: var(--surface); box-shadow: var(--shadow-raise);
+}
+.create-name { font-size: 17px; line-height: 22px; font-weight: 600; letter-spacing: -0.2px; }
+.create-note { font-size: 13.5px; line-height: 18px; color: var(--text-secondary); }
+.create-done { display: grid; justify-items: center; gap: 10px; text-align: center; padding: 10px var(--gutter) 24px; }
+.create-mark { display: block; margin-bottom: 4px; }
+.create-done .t-body { max-width: 34ch; }
+.create-done-actions { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 10px; width: 100%; padding-top: 14px; }

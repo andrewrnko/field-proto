@@ -1,0 +1,15 @@
+import puppeteer from "puppeteer-core";
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+const b=await puppeteer.launch({executablePath:"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",headless:"new",userDataDir:`/tmp/gr-close-${process.pid}`,args:["--no-first-run","--font-render-hinting=none"]});
+const p=await b.newPage(); await p.setViewport({width:520,height:1000,deviceScaleFactor:3});
+const problems=[]; p.on("pageerror",e=>problems.push(e.message.slice(0,140)));
+p.on("console",m=>{if(m.type()==="error")problems.push(m.text().slice(0,140))});
+await p.goto("http://127.0.0.1:4825",{waitUntil:"networkidle0"}); await wait(900);
+const shot=async n=>{const d=await p.$(".screen"); await d.screenshot({path:`shots/ops/${n}.png`}); console.log("shot",n)};
+await p.evaluate(()=>{const el=document.querySelector(".screen-scroll"); el.scrollTop=el.scrollHeight;});
+await wait(600); await shot("07-closeout-line");
+const ok = await p.evaluate(()=>{const b=[...document.querySelectorAll("button")].find(x=>/Close out/i.test(x.textContent||"")); if(b){b.click();return true} return false});
+await wait(900);
+if(ok) await shot("08-closeout-step1"); else problems.push("no close-out entry point found");
+console.log(problems.length?problems.join("\n"):"clean");
+await b.close();

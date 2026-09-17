@@ -1,0 +1,91 @@
+/* ------------------------------------------------------------------ *
+ * Kit — dense white cards on light grey, small type, measured objects.
+ * Type here runs 11–17px on purpose: the references are compact, and a
+ * founder reading a board wants more per screen, not less.
+ * ------------------------------------------------------------------ */
+
+.k-card {
+  background: var(--surface);
+  border-radius: 20px;
+  box-shadow: var(--shadow-raise);
+  overflow: hidden;
+}
+.k-card.is-pad { padding: 16px; }
+.k-card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-bottom: 12px; }
+.k-card:not(.is-pad) > .k-card-head { padding: 16px 16px 12px; }
+.k-card-title { font-size: 14px; line-height: 19px; font-weight: 640; letter-spacing: -0.1px; }
+
+/* -------------------------------- gauge ------------------------------- */
+.k-gauge { position: relative; display: grid; justify-items: center; margin: 0 auto; }
+.k-gauge svg { display: block; overflow: visible; }
+.k-gauge-mid { position: absolute; top: 38%; display: grid; justify-items: center; gap: 1px; }
+.k-gauge-value { font-size: 34px; line-height: 36px; font-weight: 680; letter-spacing: -1.2px; font-variant-numeric: tabular-nums; }
+.k-gauge-value em { font-style: normal; font-size: 16px; font-weight: 600; letter-spacing: -0.2px; color: var(--text-secondary); margin-left: 1px; }
+.k-gauge-label { font-size: 12px; font-weight: 600; color: var(--text-secondary); }
+.k-gauge-caption { font-size: 12.5px; line-height: 17px; color: var(--text-tertiary); text-align: center; margin-top: -6px; max-width: 30ch; }
+
+/* -------------------------------- ring -------------------------------- */
+.k-ring { flex: none; }
+.k-ring-blue { color: var(--hue-blue); }
+.k-ring-emerald { color: var(--hue-emerald); }
+.k-ring-amber { color: var(--hue-amber); }
+.k-ring-coral { color: var(--hue-coral); }
+.k-ring-violet { color: var(--hue-violet); }
+/* three-up under a card: the ring sits above its number so nothing collides */
+.k-ringstat { display: grid; justify-items: center; gap: 6px; min-width: 0; text-align: center; }
+.k-ringstat-value { font-size: 15px; line-height: 20px; font-weight: 640; letter-spacing: -0.3px; font-variant-numeric: tabular-nums; }
+.k-ringstat-label { font-size: 11px; line-height: 14px; color: var(--text-tertiary); white-space: nowrap; }
+
+/* -------------------------------- pill -------------------------------- */
+.k-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 8px; border-radius: 7px;
+  font-size: 11.5px; line-height: 15px; font-weight: 640; letter-spacing: -0.05px;
+  background: var(--selection); color: var(--text-secondary); white-space: nowrap;
+}
+.k-pill-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.k-pill-blue    { background: var(--hue-blue-soft);    color: var(--hue-blue); }
+.k-pill-emerald { background: var(--hue-emerald-soft); color: var(--hue-emerald); }
+.k-pill-amber   { background: var(--hue-amber-soft);   color: var(--hue-amber); }
+.k-pill-coral   { background: var(--hue-coral-soft);   color: var(--hue-coral); }
+.k-pill-violet  { background: var(--hue-violet-soft);  color: var(--hue-violet); }
+.k-pill-teal    { background: var(--hue-teal-soft);    color: var(--hue-teal); }
+
+/* -------------------------------- ticks ------------------------------- */
+.k-ticks { display: flex; gap: 3px; }
+.k-ticks i { display: block; width: 100%; height: 8px; border-radius: 3px; background: var(--surface-sunken); flex: 1; }
+.k-ticks i.is-on { background: var(--tick, var(--hue-blue)); }
+
+/* ------------------------------- stepper ------------------------------ */
+.k-step { display: grid; }
+.k-step-row { display: grid; grid-template-columns: 52px 16px minmax(0, 1fr); gap: 10px; min-height: 46px; }
+.k-step-when { font-size: 11.5px; line-height: 16px; color: var(--text-tertiary); font-variant-numeric: tabular-nums; padding-top: 1px; }
+.k-step-spine { position: relative; display: grid; justify-items: center; }
+.k-step-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--surface-sunken); box-shadow: inset 0 0 0 2px var(--border-strong); margin-top: 3px; z-index: 1; }
+.k-step-line { position: absolute; top: 14px; bottom: -4px; width: 2px; background: var(--border); }
+.k-step-row.is-done .k-step-dot { background: var(--hue-blue); box-shadow: none; }
+.k-step-row.is-done .k-step-line { background: var(--hue-blue); opacity: 0.35; }
+.k-step-row.is-live .k-step-dot { background: var(--hue-blue); box-shadow: 0 0 0 4px color-mix(in srgb, var(--hue-blue) 22%, transparent); }
+.k-step-body { display: grid; gap: 3px; padding-bottom: 14px; justify-items: start; }
+.k-step-title { font-size: 13.5px; line-height: 18px; font-weight: 580; }
+.k-step-note { font-size: 12px; line-height: 16px; color: var(--text-tertiary); }
+.k-step-row.is-todo .k-step-title { color: var(--text-tertiary); font-weight: 500; }
+
+/* -------------------------------- chips ------------------------------- */
+.k-chips { display: flex; gap: 7px; overflow-x: auto; scrollbar-width: none; padding: 0 var(--gutter) 2px 0; }
+.k-chips::-webkit-scrollbar { display: none; }
+.k-chip {
+  display: inline-flex; align-items: center; gap: 6px; flex: none;
+  height: 34px; padding: 0 13px; border-radius: 999px;
+  background: var(--surface); box-shadow: var(--shadow-raise);
+  font-size: 13px; font-weight: 580; color: var(--text-secondary);
+}
+.k-chip.is-on { background: var(--action); color: var(--action-text); box-shadow: none; }
+
+/* ------------------------------- metric ------------------------------- */
+.k-metric { display: grid; gap: 2px; min-width: 0; }
+.k-metric-value { font-size: 20px; line-height: 24px; font-weight: 660; letter-spacing: -0.6px; font-variant-numeric: tabular-nums; }
+.k-metric-label { font-size: 11.5px; line-height: 15px; color: var(--text-tertiary); }
+.k-delta { display: inline-flex; align-items: center; gap: 3px; font-size: 11.5px; font-weight: 640; }
+.k-delta.is-up { color: var(--hue-emerald); }
+.k-delta.is-down { color: var(--hue-coral); }

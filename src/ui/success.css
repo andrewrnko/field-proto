@@ -1,0 +1,21 @@
+.succ { position: relative; display: grid; place-items: center; --succ: var(--hue-emerald); }
+.succ-blue { --succ: var(--hue-blue); }
+.succ-violet { --succ: var(--hue-violet); }
+.succ-amber { --succ: var(--hue-amber); }
+.succ-glow {
+  position: absolute; inset: -14%; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--succ) 55%, transparent) 0%, transparent 68%);
+  filter: blur(6px);
+}
+.succ-badge {
+  position: relative; width: 78%; height: 78%; border-radius: 50%;
+  display: grid; place-items: center; color: #fff;
+  background: linear-gradient(160deg,
+    color-mix(in srgb, var(--succ) 78%, white) 0%,
+    var(--succ) 55%,
+    color-mix(in srgb, var(--succ) 80%, black) 100%);
+  box-shadow:
+    inset 0 2px 3px rgb(255 255 255 / 45%),
+    inset 0 -3px 6px rgb(0 0 0 / 18%),
+    0 10px 22px -8px color-mix(in srgb, var(--succ) 60%, transparent);
+}

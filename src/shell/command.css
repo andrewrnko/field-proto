@@ -1,0 +1,12 @@
+.cmd-field {
+  display: flex; align-items: center; gap: 10px;
+  margin: 2px var(--gutter) 14px; padding: 0 14px; min-height: 52px;
+  border-radius: 18px; background: var(--surface-sunken);
+}
+.cmd-field input { flex: 1; min-width: 0; border: 0; background: none; outline: 0; font-size: 17px; }
+.cmd-hit { display: flex; align-items: center; gap: 14px; width: 100%; padding: 12px 0; text-align: left; }
+.cmd-hit + .cmd-hit { box-shadow: inset 0 1px 0 var(--border); }
+.cmd-hit .grow { display: grid; grid-template-columns: minmax(0,1fr); gap: 2px; }
+.cmd-title { font-size: 17px; line-height: 23px; font-weight: 580; letter-spacing: -0.2px; }
+.cmd-note { font-size: 14.5px; line-height: 20px; color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cmd-empty { display: grid; gap: 10px; padding: 18px 0 8px; }

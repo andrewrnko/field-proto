@@ -1,0 +1,184 @@
+/* GotRot Field — design tokens.
+   Derived from GOTROT_DESIGN_SYSTEM.md v2 (2026-09-15) §5 Visual foundation,
+   extended for touch/field use. Never hardcode a hex in a component. */
+
+:root {
+  /* ---- surfaces ---- */
+  --canvas:           #F3F1ED;
+  --canvas-deep:      #E8E5DF;
+  --surface:          #FFFFFF;
+  --surface-muted:    #F7F5F2;
+  --surface-sunken:   #EBE8E2;
+  --scrim:            rgb(18 18 24 / 32%);
+
+  /* ---- ink ---- */
+  --text:             #16161A;
+  --text-secondary:   #6A6862;
+  --text-tertiary:    #93908A;
+  --text-inverse:     #FFFFFF;
+
+  /* ---- lines ---- */
+  --border:           #E6E2DB;
+  --border-strong:    #D6D1C8;
+  --input-border:     #85858F;
+  --edge-highlight:   #FFFFFF;
+
+  /* ---- action ---- */
+  --action:           #171719;
+  --action-hover:     #29292C;
+  --action-text:      #FFFFFF;
+  --selection:        #EFECE6;
+  --pill:             #FFFFFF;
+
+  /* ---- semantic ---- */
+  --success-text:     #25653B;
+  --success-bg:       #EAF5ED;
+  --warning-text:     #85500A;
+  --warning-bg:       #FFF3DC;
+  --danger-text:      #A63232;
+  --danger-bg:        #FDEDED;
+  --info-text:        #275E8E;
+  --info-bg:          #EAF2FA;
+  --focus:            #2563EB;
+
+  /* ---- the object palette ----
+     Every glossy object, chip and accent draws from these ten hues. A hue is
+     assigned to a KIND of thing (money is always emerald, moisture always cyan)
+     so colour teaches the app instead of decorating it. */
+  --hue-blue:     #2F6BFF;  --hue-blue-soft:    #E8EEFF;
+  --hue-amber:    #C2760C;  --hue-amber-soft:   #FDF0DC;
+  --hue-cyan:     #0E8FA8;  --hue-cyan-soft:    #E0F4F8;
+  --hue-indigo:   #5A4BD6;  --hue-indigo-soft:  #ECE9FD;
+  --hue-emerald:  #18794E;  --hue-emerald-soft: #E3F4EA;
+  --hue-coral:    #D8453A;  --hue-coral-soft:   #FDECEA;
+  --hue-violet:   #8A3FD1;  --hue-violet-soft:  #F3E9FD;
+  --hue-teal:     #0F7E72;  --hue-teal-soft:    #DEF3F0;
+  --hue-yellow:   #A8760A;  --hue-yellow-soft:  #FCF2D8;
+  --hue-pink:     #C0417F;  --hue-pink-soft:    #FCE9F2;
+
+  /* atmosphere — a wash, never a flood */
+  --sky: radial-gradient(120% 70% at 12% -10%, #E6EEFF 0%, rgb(230 238 255 / 0%) 62%),
+         radial-gradient(90% 60% at 100% -6%, #FFEFE2 0%, rgb(255 239 226 / 0%) 55%);
+
+  /* document objects (the one place saturated colour is allowed) */
+  --doc-blue-1:       #4C87D8;
+  --doc-blue-2:       #2F63AC;
+  --doc-blue-edge:    #8FB6EA;
+  --doc-amber-1:      #E2A33C;
+  --doc-amber-2:      #C07C1C;
+
+  /* ---- geometry ---- */
+  --r-field:   14px;
+  --r-row:     20px;
+  --r-card:    24px;
+  --r-panel:   28px;
+  --r-sheet:   32px;
+  --r-pill:    999px;
+
+  /* rhythm, not a constant: inside a line · between lines · between rows ·
+     heading to content · between sections · new idea */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 20px;
+  --sp-5: 32px; --sp-6: 52px; --sp-7: 80px;
+  --gutter: 22px;
+
+  --touch: 44px;
+  --touch-row: 64px;
+  --action-h: 56px;
+
+  /* ---- material: raised panel (IMG_4198 anchor) ---- */
+  --panel-bg: var(--surface-muted);
+  --panel-shadow:
+    inset 0 2px 1px #FFFFFF,
+    0 24px 50px -22px rgb(41 41 52 / 21%),
+    0 4px 10px rgb(41 41 52 / 3%);
+  /* raised step / row */
+  --step-bg: linear-gradient(#FFFFFF, #FAFAFA);
+  --step-shadow:
+    0 3px 6px rgb(36 36 48 / 3%),
+    0 1px 1px rgb(36 36 48 / 2%);
+  --step-shadow-lift:
+    0 10px 22px -8px rgb(36 36 48 / 14%),
+    0 2px 4px rgb(36 36 48 / 4%);
+  /* depth communicates layer, never decoration */
+  /* soft, warm, and low — objects float on the bone canvas rather than sit on it */
+  --shadow-raise: 0 1px 2px rgb(40 34 24 / 5%), 0 10px 26px -16px rgb(40 34 24 / 20%);
+  --shadow-lift:  0 2px 6px rgb(40 34 24 / 7%), 0 22px 50px -20px rgb(40 34 24 / 26%);
+  --shadow-float: 0 2px 6px rgb(40 34 24 / 8%), 0 14px 34px -12px rgb(40 34 24 / 22%);
+  --glass: color-mix(in srgb, var(--surface) 72%, transparent);
+  --sheet-shadow: 0 -8px 40px -12px rgb(20 20 30 / 22%), 0 -1px 0 rgb(255 255 255 / 70%) inset;
+
+  /* ---- type ---- */
+  --font: "Jakarta", -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  --font-num: "SF Mono", ui-monospace, "SF Pro Text", var(--font);
+
+  /* ---- motion (design system §7) ---- */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --t-press: 110ms;
+  --t-pop:   150ms;
+  --t-sheet: 200ms;
+  --t-row:   180ms;
+}
+
+:root[data-theme="dark"] {
+  --canvas:           #0C0C0B;
+  --canvas-deep:      #060605;
+  --surface:          #1D1D1B;
+  --surface-muted:    #232428;
+  --surface-sunken:   #141517;
+  --scrim:            rgb(0 0 0 / 55%);
+
+  --text:             #F3F3F5;
+  --text-secondary:   #A0A0AB;
+  --text-tertiary:    #71717D;
+  --text-inverse:     #17171B;
+
+  --border:           #2A2A31;
+  --border-strong:    #3A3A43;
+  --input-border:     #5A5A66;
+  --edge-highlight:   rgb(255 255 255 / 7%);
+
+  --action:           #F3F3F5;
+  --action-hover:     #E2E2E6;
+  --action-text:      #17171B;
+  --selection:        #24242B;
+  --pill:             #2E2E37;
+
+  --success-text:     #6CBE90;
+  --success-bg:       #14291D;
+  --warning-text:     #C8934A;
+  --warning-bg:       #2C2211;
+  --danger-text:      #E07A7A;
+  --danger-bg:        #2E1717;
+  --info-text:        #8FBEEB;
+  --info-bg:          #15222F;
+
+  --hue-blue-soft:    #16203A;
+  --hue-amber-soft:   #2E2413;
+  --hue-cyan-soft:    #10282E;
+  --hue-indigo-soft:  #1E1A3A;
+  --hue-emerald-soft: #12291D;
+  --hue-coral-soft:   #301A18;
+  --hue-violet-soft:  #24162F;
+  --hue-teal-soft:    #102825;
+  --hue-yellow-soft:  #2B2310;
+  --hue-pink-soft:    #2E1622;
+  --hue-blue:   #7DA2FF;  --hue-amber:  #D9A45A;  --hue-cyan:    #5FC4D8;
+  --hue-indigo: #9B90F0;  --hue-emerald: #6CBE90; --hue-coral:   #F08A80;
+  --hue-violet: #C08BEF;  --hue-teal:   #5EBDB0;  --hue-yellow:  #D7B15C;
+  --hue-pink:   #EA8CB6;
+  --sky: radial-gradient(120% 70% at 12% -10%, #16203A 0%, rgb(22 32 58 / 0%) 62%),
+         radial-gradient(90% 60% at 100% -6%, #2B1E18 0%, rgb(43 30 24 / 0%) 55%);
+
+  --panel-bg: var(--surface-muted);
+  --panel-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 6%),
+    0 24px 50px -22px rgb(0 0 0 / 70%);
+  --step-bg: linear-gradient(#1F1F25, #1A1A20);
+  --step-shadow: 0 1px 2px rgb(0 0 0 / 40%), inset 0 1px 0 rgb(255 255 255 / 4%);
+  --step-shadow-lift: 0 12px 26px -10px rgb(0 0 0 / 70%), inset 0 1px 0 rgb(255 255 255 / 6%);
+  --shadow-raise: 0 1px 2px rgb(0 0 0 / 40%), inset 0 0 0 1px rgb(255 255 255 / 5%);
+  --shadow-lift: 0 18px 44px -18px rgb(0 0 0 / 75%), inset 0 0 0 1px rgb(255 255 255 / 7%);
+  --shadow-float: 0 18px 40px -14px rgb(0 0 0 / 80%), inset 0 0 0 1px rgb(255 255 255 / 9%);
+  --glass: color-mix(in srgb, var(--surface-muted) 76%, transparent);
+  --sheet-shadow: 0 -8px 40px -12px rgb(0 0 0 / 60%), 0 -1px 0 rgb(255 255 255 / 8%) inset;
+}
